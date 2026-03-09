@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TextCrafter project site
 
-## Getting Started
+This subproject contains a single-page `Next.js` site for the `TextCrafter` paper and is configured for `GitHub Pages` via static export.
 
-First, run the development server:
+## Local development
+
+Run the site locally:
 
 ```bash
+cd site
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Files you will likely edit
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `site/src/data/project.ts`: title, authors, links, section text, citation
+- `site/src/app/page.tsx`: page layout and section ordering
+- `site/public/images/paper/`: project figures used on the page
 
-## Learn More
+## Build for production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd site
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The static output is generated into `site/out`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## GitHub Pages deployment
 
-## Deploy on Vercel
+This repository includes a workflow at `.github/workflows/deploy-pages.yml`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To enable deployment:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push the repository to GitHub.
+2. In the GitHub repository, open `Settings -> Pages`.
+3. Set `Source` to `GitHub Actions`.
+4. Push to the default branch again, or manually run the workflow.
+
+The workflow builds `site/`, exports static files, and deploys `site/out` to GitHub Pages.
+
+## Notes
+
+- External project links are placeholders right now and can be filled in later in `site/src/data/project.ts`.
+- The current BibTeX block is a safe manuscript placeholder and should be updated after final publication details are available.
