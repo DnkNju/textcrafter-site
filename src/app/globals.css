@@ -171,26 +171,20 @@ a {
 @keyframes whatEmblemMotion {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(0.9);
+    transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(0, -10px, 0) scale(1.12);
+    transform: translate3d(0, -8px, 0) scale(1.1);
   }
 }
 
 @keyframes whatEmblemSpin {
   0%,
   100% {
-    transform: rotate(-12deg) scale(0.94);
-  }
-  25% {
-    transform: rotate(-4deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   50% {
-    transform: rotate(12deg) scale(1.08);
-  }
-  75% {
-    transform: rotate(4deg) scale(1.01);
+    transform: rotate(10deg) scale(1.08);
   }
 }
 

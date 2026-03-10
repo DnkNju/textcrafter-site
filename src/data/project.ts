@@ -202,10 +202,10 @@ export const datasetShowcase = {
     },
   ],
   combinedFigure: {
-    src: "/images/paper/datasets-combined.png",
+    src: "/images/paper/datasets-concat.png",
     alt: "Combined benchmark complexity and scene distribution figures for CVTG-2K and CVTG-Hard",
-    width: 2248,
-    height: 1692,
+    width: 5212,
+    height: 2915,
   },
   figureCaption:
     "The upper figure compares prompt complexity and granularity, while the lower figure shows scene distributions for CVTG-2K and CVTG-Hard.",
