@@ -89,7 +89,7 @@ function LinkGrid({ mobile = false }: { mobile?: boolean }) {
       {project.links.map((link) => (
         <a
           key={link.label}
-          href={link.href || "#overview"}
+          href={link.href || "#top"}
           className="group flex items-center gap-4 rounded-[22px] border border-white/10 bg-[#071121]/74 px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-1 hover:border-white/22 hover:bg-[#0a1629] hover:shadow-[0_18px_48px_rgba(5,9,20,0.38)]"
         >
           <span
@@ -282,15 +282,15 @@ export function HeroSection() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
                   className="inline-flex items-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#ec4899)] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(168,85,247,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_rgba(236,72,153,0.32)]"
-                  href={primaryAction.href || "#overview"}
+                  href={primaryAction.href || "#top"}
                 >
                   {primaryAction.label}
                 </a>
                 <a
                   className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-semibold text-slate-100 transition duration-300 hover:border-white/22 hover:bg-white/10"
-                  href="#results"
+                  href="#method"
                 >
-                  View Results
+                  Technical Framework
                 </a>
               </div>
 
@@ -408,15 +408,15 @@ export function HeroSection() {
                   <div className="mt-7 flex flex-wrap items-center gap-4">
                     <a
                       className="inline-flex items-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#ec4899)] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(168,85,247,0.35)]"
-                      href={primaryAction.href || "#overview"}
+                      href={primaryAction.href || "#top"}
                     >
                       {primaryAction.label}
                     </a>
                     <a
                       className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-semibold text-slate-100"
-                      href="#results"
+                      href="#method"
                     >
-                      View Results
+                      Technical Framework
                     </a>
                   </div>
                 </div>

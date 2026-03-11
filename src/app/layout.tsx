@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TextCrafter | Project Page",
   description:
-    "TextCrafter project page for complex visual text generation, multi-text insulation, quotation-guided attention, and the CVTG-2K benchmark.",
+    "TextCrafter project page for complex visual text generation, multi-text insulation, text-oriented attention, and the CVTG-2K benchmark.",
 };
 
 export default function RootLayout({

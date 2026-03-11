@@ -1,3 +1,38 @@
+function DemoPlayIcon() {
+  return (
+    <svg viewBox="0 0 28 28" fill="none" className="what-emblem-icon h-[2.45rem] w-[2.45rem]">
+      <rect
+        x="4"
+        y="5"
+        width="20"
+        height="18"
+        rx="4.8"
+        fill="url(#demoVideoPlate)"
+        stroke="rgba(255,255,255,0.32)"
+        strokeWidth="0.8"
+      />
+      <path d="m12.2 10.1 6 3.9-6 3.9v-7.8Z" fill="rgba(255,255,255,0.94)" />
+      <path
+        d="M7.8 9.1h1.4M7.8 13.9h1.4M7.8 18.7h1.4"
+        stroke="rgba(255,255,255,0.45)"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18.8 9.1h1.4M18.8 13.9h1.4M18.8 18.7h1.4"
+        stroke="rgba(255,255,255,0.45)"
+        strokeLinecap="round"
+      />
+      <defs>
+        <linearGradient id="demoVideoPlate" x1="5.6" y1="6" x2="22.4" y2="22" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#F9A8D4" />
+          <stop offset="0.54" stopColor="#A78BFA" />
+          <stop offset="1" stopColor="#60A5FA" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 export function DemoVideoSection() {
   return (
     <section
@@ -9,6 +44,11 @@ export function DemoVideoSection() {
           <h2 className="section-gradient-title inline-block bg-clip-text text-[clamp(3.7rem,7.2vw,6.8rem)] font-semibold leading-none tracking-tight text-transparent">
             Demo Video
           </h2>
+          <div className="mt-6 flex justify-center">
+            <div className="what-emblem-motion flex h-[4.2rem] w-[4.2rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] shadow-[0_0_54px_rgba(236,72,153,0.14)] backdrop-blur-sm">
+              <DemoPlayIcon />
+            </div>
+          </div>
         </div>
 
         <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_24px_120px_rgba(6,10,22,0.55)] sm:p-4">

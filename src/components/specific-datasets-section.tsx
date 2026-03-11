@@ -6,7 +6,7 @@ import { datasetShowcase } from "@/data/project";
 
 function DatasetStackIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="what-emblem-icon h-7 w-7">
+    <svg viewBox="0 0 24 24" fill="none" className="what-emblem-icon h-[2.45rem] w-[2.45rem]">
       <rect x="5" y="5" width="9" height="9" rx="2.2" fill="#A3E635" opacity="0.95" />
       <rect x="8.2" y="7.6" width="9" height="9" rx="2.2" fill="#60A5FA" opacity="0.95" />
       <rect x="11.4" y="10.2" width="9" height="9" rx="2.2" fill="#F472B6" opacity="0.95" />
@@ -30,13 +30,12 @@ export function SpecificDatasetsSection() {
       className="scroll-mt-28 border-b border-white/8 bg-[radial-gradient(circle_at_18%_12%,rgba(168,85,247,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(34,211,238,0.12),transparent_26%),linear-gradient(180deg,rgba(8,17,37,0.99),rgba(7,14,31,0.98)_48%,rgba(6,11,22,1))] px-6 py-24 sm:px-8 lg:px-10"
     >
       <div className="mx-auto max-w-[1460px]">
-        <div className="mx-auto max-w-[980px] text-center">
-          <h2 className="text-[clamp(3.05rem,6.3vw,6rem)] font-semibold leading-[0.96] tracking-tight">
-            <span className="section-gradient-title block">Specific Datasets for</span>
-            <span className="section-gradient-title block">TextCrafter</span>
+        <div className="mx-auto max-w-[1240px] text-center">
+          <h2 className="text-[clamp(2.45rem,5vw,5.15rem)] font-semibold leading-[0.98] tracking-[-0.035em]">
+            <span className="section-gradient-title block">Datasets for TextCrafter</span>
           </h2>
           <div className="mt-6 flex justify-center">
-            <div className="what-emblem-motion flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] shadow-[0_0_50px_rgba(236,72,153,0.12)] backdrop-blur-sm">
+            <div className="what-emblem-motion flex h-[4.2rem] w-[4.2rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] shadow-[0_0_54px_rgba(236,72,153,0.14)] backdrop-blur-sm">
               <DatasetStackIcon />
             </div>
           </div>
@@ -50,26 +49,41 @@ export function SpecificDatasetsSection() {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
           <div className="relative">
-            <div className="inline-flex rounded-full border border-fuchsia-300/18 bg-fuchsia-300/10 px-5 py-2 text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-fuchsia-200 shadow-[0_0_36px_rgba(232,121,249,0.18)] sm:text-[0.84rem]">
-              {datasetShowcase.badge}
-            </div>
-
-            <div className="mt-6 rounded-[26px] border border-white/10 bg-[linear-gradient(90deg,rgba(55,34,92,0.72),rgba(49,43,100,0.54)_35%,rgba(39,77,84,0.48))] p-2 shadow-[0_18px_60px_rgba(8,10,24,0.28)]">
-              <div className="grid gap-2 sm:grid-cols-2">
+            <div className="dataset-tabs-shell mt-6 rounded-[30px] border border-white/10 bg-[linear-gradient(90deg,rgba(42,23,71,0.82),rgba(54,35,88,0.74)_34%,rgba(61,42,83,0.62)_66%,rgba(26,67,73,0.52))] p-3 shadow-[0_22px_90px_rgba(7,12,28,0.42)]">
+              <div className="pointer-events-none absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_18%_48%,rgba(232,121,249,0.16),transparent_18%),radial-gradient(circle_at_74%_52%,rgba(96,165,250,0.12),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.04),transparent_18%,transparent_82%,rgba(255,255,255,0.03))]" />
+              <div className="relative grid gap-3 sm:grid-cols-2">
                 {datasetShowcase.tabs.map((item) => {
                   const isActive = item.key === activeKey;
                   return (
                     <button
                       key={item.key}
                       type="button"
+                      aria-pressed={isActive}
                       onClick={() => setActiveKey(item.key)}
-                      className={`rounded-[20px] px-5 py-4 text-center text-sm font-semibold transition duration-300 sm:text-base ${
+                      className={`group relative overflow-hidden rounded-[24px] px-5 py-5 text-center text-[0.98rem] font-semibold tracking-tight transition duration-300 sm:px-7 sm:text-[1.08rem] ${
                         isActive
-                          ? "border border-fuchsia-300/26 bg-[linear-gradient(135deg,rgba(244,114,182,0.26),rgba(192,132,252,0.18))] text-fuchsia-200 shadow-[0_0_42px_rgba(244,114,182,0.3)]"
-                          : "border border-transparent bg-transparent text-slate-400 hover:text-slate-200"
+                          ? "dataset-tab-active text-white"
+                          : "text-slate-300/70 hover:scale-[1.01] hover:text-slate-100"
                       }`}
                     >
-                      {item.label}
+                      {isActive ? (
+                        <>
+                          <span className="pointer-events-none absolute inset-[-16%] rounded-[30px] bg-[radial-gradient(circle_at_26%_48%,rgba(240,171,252,0.42),rgba(232,121,249,0.26)_34%,rgba(96,165,250,0.18)_58%,transparent_78%)] blur-2xl" />
+                          <span className="pointer-events-none absolute inset-0 rounded-[24px] border border-fuchsia-200/20 bg-[linear-gradient(135deg,rgba(78,48,110,0.9),rgba(92,48,110,0.86)_38%,rgba(82,50,97,0.82)_72%,rgba(67,54,115,0.86))]" />
+                          <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                        </>
+                      ) : (
+                        <span className="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent bg-transparent transition duration-300 group-hover:border-white/10 group-hover:bg-white/[0.04]" />
+                      )}
+                      <span
+                        className={`relative inline-block transition duration-300 ${
+                          isActive
+                            ? "bg-[linear-gradient(90deg,#d58dff_0%,#ff7cad_48%,#ff9f70_100%)] bg-clip-text text-transparent [-webkit-text-fill-color:transparent]"
+                            : ""
+                        }`}
+                      >
+                        {item.label}
+                      </span>
                     </button>
                   );
                 })}
@@ -81,22 +95,8 @@ export function SpecificDatasetsSection() {
                 {activeTab.title}
               </h3>
               <p className="mx-auto mt-4 max-w-[980px] text-base leading-8 text-slate-200/90 sm:text-[1.04rem]">
-                {activeTab.summary}
+                {activeTab.body}
               </p>
-              <p className="mx-auto mt-3 max-w-[980px] text-base leading-8 text-slate-300 sm:text-[1.02rem]">
-                {activeTab.details}
-              </p>
-            </div>
-
-            <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {activeTab.highlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[22px] border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-medium text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
-                >
-                  {item}
-                </div>
-              ))}
             </div>
 
             <div className="mt-10 overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.06] p-4 shadow-[0_18px_60px_rgba(4,10,20,0.34)] sm:p-5">
@@ -109,9 +109,6 @@ export function SpecificDatasetsSection() {
                   className="h-auto w-full"
                 />
               </div>
-              <p className="px-2 pb-1 pt-5 text-center text-sm leading-7 text-slate-300 sm:text-[0.96rem]">
-                {datasetShowcase.figureCaption}
-              </p>
             </div>
           </div>
         </div>

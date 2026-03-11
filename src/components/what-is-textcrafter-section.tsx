@@ -3,7 +3,7 @@ import { whatIsTextCrafter } from "@/data/project";
 
 function CreativeWandIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="what-emblem-icon h-7 w-7">
+    <svg viewBox="0 0 24 24" fill="none" className="what-emblem-icon h-[2.45rem] w-[2.45rem]">
       <path
         d="M12.8 11.2 19.2 17.6"
         stroke="url(#wandStroke)"
@@ -61,7 +61,7 @@ export function WhatIsTextCrafterSection() {
             {whatIsTextCrafter.title}
           </h2>
           <div className="mt-6 flex justify-center">
-            <div className="what-emblem-motion flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] shadow-[0_0_50px_rgba(236,72,153,0.12)] backdrop-blur-sm">
+            <div className="what-emblem-motion flex h-[4.2rem] w-[4.2rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] shadow-[0_0_54px_rgba(236,72,153,0.14)] backdrop-blur-sm">
               <CreativeWandIcon />
             </div>
           </div>

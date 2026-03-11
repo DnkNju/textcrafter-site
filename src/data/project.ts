@@ -45,10 +45,8 @@ export const navigation = [
   { label: "Home", href: "#top" },
   { label: "Demo Video", href: "#demo-video" },
   { label: "Datasets", href: "#datasets" },
-  { label: "Overview", href: "#overview" },
   { label: "Method", href: "#method" },
   { label: "Results", href: "#results" },
-  { label: "Citation", href: "#citation" },
 ] as const;
 
 export const heroShowcase = {
@@ -166,39 +164,22 @@ Decorative elements on the corkboard, such as small doodled fruits, vegetables, 
 } as const;
 
 export const datasetShowcase = {
-  badge: "Benchmark Datasets",
   description:
-    "Dive into the dedicated benchmark datasets introduced for TextCrafter to evaluate complex visual text generation under more realistic, multi-text, and attribute-aware settings.",
+    "Explore the dedicated datasets introduced for TextCrafter to evaluate complex visual text generation under more realistic, multi-text, and attribute-aware settings.",
   tabs: [
     {
       key: "cvtg-2k",
       label: "CVTG-2K",
-      title: "CVTG-2K Benchmark",
-      summary:
-        "CVTG-2K is a dedicated benchmark tailored to the CVTG task. It comprises 2,000 high-quality prompts with diverse region quantities ranging from 2 to 5 and rich visual attributes such as color, font, and size.",
-      details:
-        "Unlike previous datasets that predominantly focus on single-region or fixed-template scenarios, CVTG-2K combines global context, multiple text contents, explicit position requirements, and fine-grained visual attributes into a more challenging and realistic evaluation setting.",
-      highlights: [
-        "2,000 prompts",
-        "2 to 5 text regions",
-        "Color / font / size attributes",
-        "Global context + positions + styles",
-      ],
+      title: "CVTG-2K",
+      body:
+        "CVTG-2K is a dedicated benchmark tailored to the CVTG task. It comprises 2,000 high-quality prompts with diverse region quantities ranging from 2 to 5 and rich visual attributes such as color, font, and size. Unlike previous datasets that predominantly focus on single-region or fixed-template scenarios, CVTG-2K combines global context, multiple text contents, explicit position requirements, and fine-grained visual attributes into a more challenging and realistic evaluation setting.",
     },
     {
       key: "cvtg-hard",
       label: "CVTG-Hard",
-      title: "CVTG-Hard Subset",
-      summary:
-        "CVTG-Hard is a challenging subset built from the most difficult prompts in CVTG-2K together with their Chinese translations, yielding 400 test samples.",
-      details:
-        "The subset still maintains diverse scene distributions while concentrating on much harder failure cases. According to the paper, the visual texts in CVTG-Hard average 8.61 words and 40.79 characters, making it a compact stress test for robustness in complex visual text generation.",
-      highlights: [
-        "400 test samples",
-        "Most difficult CVTG-2K prompts",
-        "Chinese + English variants",
-        "Diverse scenes retained",
-      ],
+      title: "CVTG-Hard",
+      body:
+        "CVTG-Hard is a challenging subset built from the most difficult prompts in CVTG-2K together with their Chinese translations, yielding 400 test samples. The subset still maintains diverse scene distributions while concentrating on much harder failure cases. According to the paper, the visual texts in CVTG-Hard average 8.61 words and 40.79 characters, making it a compact stress test for robustness in complex visual text generation.",
     },
   ],
   combinedFigure: {
@@ -207,8 +188,38 @@ export const datasetShowcase = {
     width: 5212,
     height: 2915,
   },
-  figureCaption:
-    "The upper figure compares prompt complexity and granularity, while the lower figure shows scene distributions for CVTG-2K and CVTG-Hard.",
+} as const;
+
+export const technicalFramework = {
+  title: "Technical Framework",
+  description:
+    "TextCrafter combines multi-text insulation with quotation-guided text-oriented attention to suppress cross-text interference and keep visual text tokens concentrated in the correct regions.",
+  figure: {
+    src: "/pdfs/method-cropped.png",
+    alt: "Technical framework overview for TextCrafter derived from method.pdf",
+    width: 4326,
+    height: 1820,
+    markers: [
+      { key: "multi-text-insulation", label: "1", x: 20.3, y: 50 },
+      { key: "text-oriented-attention", label: "2", x: 76, y: 50 },
+    ],
+  },
+  stages: [
+    {
+      key: "multi-text-insulation",
+      title: "Multi-text Insulation",
+      description:
+        "TextCrafter treats each target string as an independent object and optimizes it with bottleneck-aware constrained reinforcement learning. OCR-based rewards, isolated matching, worst-case-aware aggregation, and anti-interference penalties work together to preserve every requested text instance instead of letting one strong region hide failures in the others.",
+      icon: "insulation",
+    },
+    {
+      key: "text-oriented-attention",
+      title: "Text-oriented Attention",
+      description:
+        "TextCrafter leverages quotation marks as robust spatial anchors, refines their attention maps through smoothing, primary peak retention, and soft binarization, and uses the resulting quotation-guided gate to keep visual text tokens concentrated inside the correct region while suppressing leakage into the background or neighboring texts.",
+      icon: "attention",
+    },
+  ],
 } as const;
 
 export const contributions = [
