@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/with-base-path";
+
 function DemoPlayIcon() {
   return (
     <svg viewBox="0 0 28 28" fill="none" className="what-emblem-icon h-[2.45rem] w-[2.45rem]">
@@ -59,9 +61,9 @@ export function DemoVideoSection() {
               controls
               playsInline
               preload="metadata"
-              poster="/images/video/demo-video-poster.jpg"
+              poster={withBasePath("/images/video/demo-video-poster.jpg")}
             >
-              <source src="/videos/demo-video.mp4" type="video/mp4" />
+              <source src={withBasePath("/videos/demo-video.mp4")} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

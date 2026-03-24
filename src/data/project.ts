@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/with-base-path";
+
 export const project = {
   shortTitle: "TextCrafter",
   title:
@@ -53,20 +55,20 @@ export const navigation = [
 
 export const heroShowcase = {
   logo: {
-    src: "/images/hero/logo.jpg",
+    src: withBasePath("/images/hero/logo.jpg"),
     alt: "TextCrafter logo",
     width: 1662,
     height: 1478,
   },
   poster: {
-    src: "/images/hero/20260308210540.png",
+    src: withBasePath("/images/hero/20260308210540.png"),
     alt: "TextCrafter CVTG benchmark hero poster",
     width: 1024,
     height: 1536,
   },
   cards: [
     {
-      src: "/images/hero/1773041835127.jpg",
+      src: withBasePath("/images/hero/1773041835127.jpg"),
       alt: "TextCrafter hero card 1",
       width: 1280,
       height: 1280,
@@ -78,7 +80,7 @@ export const heroShowcase = {
       delay: "0s",
     },
     {
-      src: "/images/hero/1773042618729.jpg",
+      src: withBasePath("/images/hero/1773042618729.jpg"),
       alt: "TextCrafter hero card 2",
       width: 1024,
       height: 1024,
@@ -90,7 +92,7 @@ export const heroShowcase = {
       delay: "0.5s",
     },
     {
-      src: "/images/hero/1773042626839.jpg",
+      src: withBasePath("/images/hero/1773042626839.jpg"),
       alt: "TextCrafter hero card 3",
       width: 1024,
       height: 1024,
@@ -102,7 +104,7 @@ export const heroShowcase = {
       delay: "1s",
     },
     {
-      src: "/images/hero/1773042701183.jpg",
+      src: withBasePath("/images/hero/1773042701183.jpg"),
       alt: "TextCrafter hero card 4",
       width: 1024,
       height: 1024,
@@ -114,7 +116,7 @@ export const heroShowcase = {
       delay: "1.3s",
     },
     {
-      src: "/images/hero/1773043165994.jpg",
+      src: withBasePath("/images/hero/1773043165994.jpg"),
       alt: "TextCrafter hero card 5",
       width: 1024,
       height: 1024,
@@ -126,7 +128,7 @@ export const heroShowcase = {
       delay: "1.7s",
     },
     {
-      src: "/images/hero/1773043380960.jpg",
+      src: withBasePath("/images/hero/1773043380960.jpg"),
       alt: "TextCrafter hero card 6",
       width: 1024,
       height: 1024,
@@ -158,7 +160,7 @@ Moving leftward toward the lower section, a soft-blue sticky note titled "Stay H
 
 Decorative elements on the corkboard, such as small doodled fruits, vegetables, and paper clips scattered around the borders, enhance visual warmth and highlight the approachable nature of the presented messages.`,
   result: {
-    src: "/images/hero/1773041770564.jpg",
+    src: withBasePath("/images/hero/1773041770564.jpg"),
     alt: "TextCrafter generated bulletin-board style health slide",
     width: 1024,
     height: 1024,
@@ -193,7 +195,7 @@ const platformGalleryImageNames = [
 ] as const;
 
 const platformGalleryImages = platformGalleryImageNames.map((name, index) => ({
-  src: `/images/hero/${name}`,
+  src: withBasePath(`/images/hero/${name}`),
   alt: `TextCrafter platform gallery sample ${index + 1}`,
 }));
 
@@ -224,7 +226,7 @@ export const datasetShowcase = {
     },
   ],
   combinedFigure: {
-    src: "/images/paper/datasets-concat.png",
+    src: withBasePath("/images/paper/datasets-concat.png"),
     alt: "Combined benchmark complexity and scene distribution figures for CVTG-2K and CVTG-Hard",
     width: 5212,
     height: 2915,
@@ -236,7 +238,7 @@ export const technicalFramework = {
   description:
     "TextCrafter combines multi-text insulation with quotation-guided text-oriented attention to suppress cross-text interference and keep visual text tokens concentrated in the correct regions.",
   figure: {
-    src: "/pdfs/method-cropped.png",
+    src: withBasePath("/pdfs/method-cropped.png"),
     alt: "Technical framework overview for TextCrafter derived from method.pdf",
     width: 4326,
     height: 1820,
@@ -311,7 +313,7 @@ export const methodCards = [
       "Aligns layout decisions with the model's own spatial preference instead of forcing external layouts.",
     ],
     image: {
-      src: "/images/paper/pre-generation.png",
+      src: withBasePath("/images/paper/pre-generation.png"),
       alt: "Pre-generation figure from the TextCrafter paper",
       width: 8662,
       height: 4331,
@@ -328,7 +330,7 @@ export const methodCards = [
       "Penalizes interference and over-generation to suppress hallucinations.",
     ],
     image: {
-      src: "/images/paper/method-rl.png",
+      src: withBasePath("/images/paper/method-rl.png"),
       alt: "Bottleneck-aware constrained reinforcement learning diagram",
       width: 8662,
       height: 4331,
@@ -345,7 +347,7 @@ export const methodCards = [
       "Stacks on top of an already strong insulation baseline.",
     ],
     image: {
-      src: "/images/paper/method-attn.png",
+      src: withBasePath("/images/paper/method-attn.png"),
       alt: "Text-oriented attention with quotation-guided attention gate",
       width: 8662,
       height: 4331,
@@ -365,7 +367,7 @@ export const resultsGallery = [
     description:
       "The project page opens with multilingual and complex-layout text rendering examples highlighted in the paper teaser.",
     image: {
-      src: "/images/paper/teaser.png",
+      src: withBasePath("/images/paper/teaser.png"),
       alt: "TextCrafter teaser examples",
       width: 2778,
       height: 1669,
@@ -376,7 +378,7 @@ export const resultsGallery = [
     description:
       "Representative qualitative outputs on longer and more challenging visual text generation prompts.",
     image: {
-      src: "/images/paper/longtext-bench.png",
+      src: withBasePath("/images/paper/longtext-bench.png"),
       alt: "LongText-Bench results",
       width: 11068,
       height: 6347,
@@ -387,7 +389,7 @@ export const resultsGallery = [
     description:
       "Additional examples from difficult prompt settings that expose omission and hallucination behavior in competing systems.",
     image: {
-      src: "/images/paper/cvtg-hard-more.png",
+      src: withBasePath("/images/paper/cvtg-hard-more.png"),
       alt: "CVTG-Hard more qualitative results",
       width: 3006,
       height: 2475,

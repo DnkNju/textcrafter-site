@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/with-base-path";
+
 type ResultRank = "best" | "second";
 
 type ResultMetric = {
@@ -370,7 +372,7 @@ export const experimentalResults = {
       note: "Metrics report text accuracy on English, Chinese, and their average.",
       minTableWidth: "58rem",
       figure: {
-        src: "/images/results/longtextbench.jpeg",
+        src: withBasePath("/images/results/longtextbench.jpeg"),
         alt: "LongText-Bench quantitative comparison chart",
         width: 11067,
         height: 6347,
