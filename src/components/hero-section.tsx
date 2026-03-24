@@ -86,20 +86,27 @@ function LinkIcon({ icon }: { icon: LinkIconName }) {
 function LinkGrid({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`grid gap-4 sm:grid-cols-2 ${mobile ? "max-w-none" : "max-w-[52rem]"}`}>
-      {project.links.map((link) => (
-        <a
-          key={link.label}
-          href={link.href || "#top"}
-          className="group flex items-center gap-4 rounded-[22px] border border-white/10 bg-[#071121]/74 px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-1 hover:border-white/22 hover:bg-[#0a1629] hover:shadow-[0_18px_48px_rgba(5,9,20,0.38)]"
-        >
-          <span
-            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${linkAccentClasses[link.accent] ?? linkAccentClasses.violet} text-white shadow-[0_8px_28px_rgba(168,85,247,0.28)] transition duration-300 group-hover:scale-105`}
+      {project.links.map((link) => {
+        const href = link.href || "#top";
+        const isExternal = href.startsWith("http");
+
+        return (
+          <a
+            key={link.label}
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noreferrer" : undefined}
+            className="group flex items-center gap-4 rounded-[22px] border border-white/10 bg-[#071121]/74 px-5 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-1 hover:border-white/22 hover:bg-[#0a1629] hover:shadow-[0_18px_48px_rgba(5,9,20,0.38)]"
           >
-            <LinkIcon icon={link.icon} />
-          </span>
-          <span className="text-sm font-semibold text-slate-100">{link.label}</span>
-        </a>
-      ))}
+            <span
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${linkAccentClasses[link.accent] ?? linkAccentClasses.violet} text-white shadow-[0_8px_28px_rgba(168,85,247,0.28)] transition duration-300 group-hover:scale-105`}
+            >
+              <LinkIcon icon={link.icon} />
+            </span>
+            <span className="text-sm font-semibold text-slate-100">{link.label}</span>
+          </a>
+        );
+      })}
     </div>
   );
 }
@@ -166,7 +173,6 @@ function AuthorMeta({ affiliations, mobile = false }: { affiliations: string; mo
 }
 
 export function HeroSection() {
-
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
@@ -183,6 +189,8 @@ export function HeroSection() {
   };
 
   const primaryAction = project.links[0];
+  const primaryActionHref = primaryAction.href || "#top";
+  const primaryActionExternal = primaryActionHref.startsWith("http");
   const affiliations = project.affiliations.join(" · ");
 
   return (
@@ -282,7 +290,9 @@ export function HeroSection() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
                   className="inline-flex items-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#ec4899)] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(168,85,247,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_rgba(236,72,153,0.32)]"
-                  href={primaryAction.href || "#top"}
+                  href={primaryActionHref}
+                  target={primaryActionExternal ? "_blank" : undefined}
+                  rel={primaryActionExternal ? "noreferrer" : undefined}
                 >
                   {primaryAction.label}
                 </a>
@@ -408,7 +418,9 @@ export function HeroSection() {
                   <div className="mt-7 flex flex-wrap items-center gap-4">
                     <a
                       className="inline-flex items-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#ec4899)] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(168,85,247,0.35)]"
-                      href={primaryAction.href || "#top"}
+                      href={primaryActionHref}
+                      target={primaryActionExternal ? "_blank" : undefined}
+                      rel={primaryActionExternal ? "noreferrer" : undefined}
                     >
                       {primaryAction.label}
                     </a>

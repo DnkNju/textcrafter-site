@@ -26,11 +26,11 @@ export const project = {
   abstract:
     "TextCrafter is a Complex Visual Text Generation framework inspired by selective visual attention. It combines bottleneck-aware reinforcement learning for multi-text insulation with a text-oriented attention module, and introduces CVTG-2K, a 2,000-prompt benchmark covering positions, quantities, lengths, and attributes across diverse visual scenes.",
   links: [
-    { label: "Research Paper", href: "", accent: "violet", icon: "book" },
-    { label: "GitHub", href: "", accent: "sky", icon: "computer" },
+    { label: "Research Paper", href: "https://arxiv.org/pdf/2503.23461", accent: "violet", icon: "book" },
+    { label: "GitHub", href: "https://github.com/NJU-PCALab/TextCrafter", accent: "sky", icon: "computer" },
     { label: "HuggingFace", href: "", accent: "amber", icon: "hugging" },
     { label: "HF Demo", href: "", accent: "rose", icon: "rocket" },
-    { label: "Datasets", href: "#datasets", accent: "emerald", icon: "dataset" },
+    { label: "Datasets", href: "https://huggingface.co/datasets/dnkdnk/CVTG-2K", accent: "emerald", icon: "dataset" },
     { label: "Demo Video", href: "#demo-video", accent: "indigo", icon: "movie" },
   ],
   stats: [
@@ -47,6 +47,8 @@ export const navigation = [
   { label: "Datasets", href: "#datasets" },
   { label: "Method", href: "#method" },
   { label: "Results", href: "#results" },
+  { label: "Gallery", href: "#platform-gallery" },
+  { label: "BibTeX", href: "#citation" },
 ] as const;
 
 export const heroShowcase = {
@@ -161,6 +163,45 @@ Decorative elements on the corkboard, such as small doodled fruits, vegetables, 
     width: 1024,
     height: 1024,
   },
+} as const;
+
+const platformGalleryImageNames = [
+  "1773041812198.jpg",
+  "1773041844823.jpg",
+  "1773042386832.jpg",
+  "1773042542392.jpg",
+  "1773042553929.jpg",
+  "1773042573596.jpg",
+  "1773042616966.jpg",
+  "1773042620505.jpg",
+  "1773042699430.jpg",
+  "1773042703070.jpg",
+  "1773042704992.jpg",
+  "1773043106659.jpg",
+  "1773043124036.jpg",
+  "1773043159484.jpg",
+  "1773043161596.jpg",
+  "1773043164247.jpg",
+  "1773043300716.jpg",
+  "1773043302357.jpg",
+  "1773043310486.jpg",
+  "1773043394573.jpg",
+  "1773043409103.jpg",
+  "1773043425483.jpg",
+  "1773043439983.jpg",
+  "1773043455056.jpg",
+] as const;
+
+const platformGalleryImages = platformGalleryImageNames.map((name, index) => ({
+  src: `/images/hero/${name}`,
+  alt: `TextCrafter platform gallery sample ${index + 1}`,
+}));
+
+export const platformGallery = {
+  title: "Platform Gallery",
+  description:
+    "Representative gallery samples highlight TextCrafter's ability to render complex visual texts across diverse scenes while mitigating text misgeneration, omissions, and hallucinations.",
+  images: platformGalleryImages,
 } as const;
 
 export const datasetShowcase = {
@@ -354,9 +395,12 @@ export const resultsGallery = [
   },
 ] as const;
 
-export const citation = `@misc{tai2026textcrafter,
+export const citation = `@misc{tai2026investigatingtextinsulationattention,
   title={Investigating Text Insulation and Attention Mechanisms for Complex Visual Text Generation},
-  author={Tai, Ying and Du, Nikai and Xie, Rui and Chen, Zhennan and Wang, Qian and Jiang, Zhengkai and Zhang, Kai and Yang, Jian},
+  author={Ying Tai and Nikai Du and Rui Xie and Zhennan Chen and Qian Wang and Zhengkai Jiang and Kai Zhang and Jian Yang},
   year={2026},
-  note={TextCrafter manuscript}
+  eprint={2503.23461},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2503.23461},
 }`;

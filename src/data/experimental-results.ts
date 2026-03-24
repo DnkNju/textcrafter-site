@@ -25,6 +25,12 @@ type ResultBenchmark = {
   description: string;
   note: string;
   minTableWidth: string;
+  figure?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   metrics: ResultMetric[];
   rows: ResultRow[];
 };
@@ -363,6 +369,12 @@ export const experimentalResults = {
         "On LongText-Bench, TextCrafter attains state-of-the-art text accuracy on both English and Chinese subsets, outperforming leading commercial systems and strong open-source competitors.",
       note: "Metrics report text accuracy on English, Chinese, and their average.",
       minTableWidth: "58rem",
+      figure: {
+        src: "/images/results/longtextbench.jpeg",
+        alt: "LongText-Bench quantitative comparison chart",
+        width: 11067,
+        height: 6347,
+      },
       metrics: [{ label: "EN" }, { label: "ZH" }, { label: "Avg" }],
       rows: [
         {

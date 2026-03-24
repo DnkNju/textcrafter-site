@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { experimentalResults } from "@/data/experimental-results";
 
@@ -141,139 +142,158 @@ export function ExperimentalResultsSection() {
 
           <div className="relative mx-auto mt-8 max-w-[1320px] overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,14,33,0.84),rgba(6,12,29,0.96))] p-2.5 shadow-[0_22px_80px_rgba(4,10,20,0.36)] sm:p-3">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(96,165,250,0.08),transparent_18%),radial-gradient(circle_at_82%_16%,rgba(192,132,252,0.08),transparent_18%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_30%)]" />
-            <div className="relative overflow-x-auto rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(6,12,30,0.88),rgba(7,12,28,0.96))]">
-              <table
-                className="w-full text-left [border-collapse:separate] [border-spacing:0]"
-                style={{ minWidth: activeBenchmark.minTableWidth }}
-              >
-                <thead>
-                  <tr>
-                    <th className="border-b border-white/8 px-0 py-0 align-middle">
-                      <div className="mx-px my-px flex h-[60px] items-center rounded-[14px] border border-violet-300/16 bg-[linear-gradient(180deg,rgba(77,70,140,0.86),rgba(56,47,114,0.82))] px-4 py-2.5 text-[0.78rem] font-semibold tracking-[0.14em] text-white uppercase shadow-[0_12px_30px_rgba(38,36,92,0.22)] sm:px-5">
-                        Model
-                      </div>
-                    </th>
-                    {activeBenchmark.metrics.map((metric) => (
-                      <th key={metric.label} className="border-b border-white/8 px-0 py-0 align-middle">
-                        <div className="mx-px my-px flex h-[60px] items-center justify-center rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(73,66,135,0.88),rgba(53,48,108,0.84))] px-3 py-2.5 text-center transition duration-300 sm:px-4">
-                          <span className="text-[0.78rem] font-semibold tracking-[0.08em] text-white uppercase sm:text-[0.82rem]">
-                            {metric.label}
-                          </span>
-                          <span className="ml-1 text-white/65">↑</span>
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {activeBenchmark.rows.map((row, rowIndex) => {
-                    const normalizedRow = row as {
-                      model: string;
-                      citation?: string;
-                      starred?: boolean;
-                      dividerBefore?: boolean;
-                      isOurs?: boolean;
-                      values: Array<{ display: string; rank?: "best" | "second"; note?: string }>;
-                    };
-                    const isRowActive = rowIndex === activeRowIndex;
-                    const borderClass = normalizedRow.dividerBefore
-                      ? "border-t border-white/16"
-                      : rowIndex === 0
-                        ? ""
-                        : "border-t border-white/[0.06]";
-
-                    return (
-                      <tr
-                        key={`${activeBenchmark.key}-${row.model}`}
-                        className="cursor-pointer"
-                        onMouseEnter={() => setActiveRowIndex(rowIndex)}
-                        onMouseLeave={() => setActiveRowIndex(null)}
-                      >
-                        <th className={`px-0 py-0 align-middle ${borderClass}`}>
-                          <div
-                            className={`mx-px my-px flex h-[64px] flex-col justify-center rounded-[14px] border px-4 py-2.5 text-left transition duration-300 sm:px-5 ${
-                              normalizedRow.isOurs
-                                ? "border-emerald-300/20 bg-[linear-gradient(180deg,rgba(8,95,74,0.82),rgba(8,70,60,0.78))] shadow-[0_0_26px_rgba(16,185,129,0.16)]"
-                                : "border-white/8 bg-[linear-gradient(180deg,rgba(9,17,39,0.74),rgba(7,13,31,0.9))]"
-                            } ${isRowActive ? "results-row-active border-cyan-300/22" : ""}`}
-                          >
-                            <span
-                              className={`text-[0.88rem] font-semibold leading-5 sm:text-[0.94rem] ${
-                                normalizedRow.isOurs ? "text-white" : "text-slate-100"
-                              }`}
-                            >
-                              {normalizedRow.model}
-                              {normalizedRow.starred ? (
-                                <sup className="ml-1 text-[0.68rem] text-cyan-200/90">*</sup>
-                              ) : null}
-                            </span>
-                            {normalizedRow.citation ? (
-                              <span className="mt-1 block text-[0.7rem] leading-4 font-medium tracking-[0.04em] text-slate-400">
-                                {normalizedRow.citation}
-                              </span>
-                            ) : null}
+            <div className="relative overflow-hidden rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(6,12,30,0.88),rgba(7,12,28,0.96))]">
+              {activeBenchmark.figure ? (
+                <div className="p-2 sm:p-3">
+                  <div className="overflow-hidden rounded-[18px] border border-white/8 bg-white">
+                    <Image
+                      src={activeBenchmark.figure.src}
+                      alt={activeBenchmark.figure.alt}
+                      width={activeBenchmark.figure.width}
+                      height={activeBenchmark.figure.height}
+                      sizes="(max-width: 1024px) 100vw, 1280px"
+                      className="h-auto w-full"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table
+                    className="w-full text-left [border-collapse:separate] [border-spacing:0]"
+                    style={{ minWidth: activeBenchmark.minTableWidth }}
+                  >
+                    <thead>
+                      <tr>
+                        <th className="border-b border-white/8 px-0 py-0 align-middle">
+                          <div className="mx-px my-px flex h-[60px] items-center rounded-[14px] border border-violet-300/16 bg-[linear-gradient(180deg,rgba(77,70,140,0.86),rgba(56,47,114,0.82))] px-4 py-2.5 text-[0.78rem] font-semibold tracking-[0.14em] text-white uppercase shadow-[0_12px_30px_rgba(38,36,92,0.22)] sm:px-5">
+                            Model
                           </div>
                         </th>
+                        {activeBenchmark.metrics.map((metric) => (
+                          <th key={metric.label} className="border-b border-white/8 px-0 py-0 align-middle">
+                            <div className="mx-px my-px flex h-[60px] items-center justify-center rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(73,66,135,0.88),rgba(53,48,108,0.84))] px-3 py-2.5 text-center transition duration-300 sm:px-4">
+                              <span className="text-[0.78rem] font-semibold tracking-[0.08em] text-white uppercase sm:text-[0.82rem]">
+                                {metric.label}
+                              </span>
+                              <span className="ml-1 text-white/65">↑</span>
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {activeBenchmark.rows.map((row, rowIndex) => {
+                        const normalizedRow = row as {
+                          model: string;
+                          citation?: string;
+                          starred?: boolean;
+                          dividerBefore?: boolean;
+                          isOurs?: boolean;
+                          values: Array<{
+                            display: string;
+                            rank?: "best" | "second";
+                            note?: string;
+                          }>;
+                        };
+                        const isRowActive = rowIndex === activeRowIndex;
+                        const borderClass = normalizedRow.dividerBefore
+                          ? "border-t border-white/16"
+                          : rowIndex === 0
+                            ? ""
+                            : "border-t border-white/[0.06]";
 
-                        {activeBenchmark.metrics.map((metric, metricIndex) => {
-                          const cell =
-                            normalizedRow.values[metricIndex] ??
-                            ({
-                              display: "-",
-                            } as {
-                              display: string;
-                              rank?: "best" | "second";
-                              note?: string;
-                            });
-                          const isUnavailable = cell.display === "-";
+                        return (
+                          <tr
+                            key={`${activeBenchmark.key}-${row.model}`}
+                            className="cursor-pointer"
+                            onMouseEnter={() => setActiveRowIndex(rowIndex)}
+                            onMouseLeave={() => setActiveRowIndex(null)}
+                          >
+                            <th className={`px-0 py-0 align-middle ${borderClass}`}>
+                              <div
+                                className={`mx-px my-px flex h-[64px] flex-col justify-center rounded-[14px] border px-4 py-2.5 text-left transition duration-300 sm:px-5 ${
+                                  normalizedRow.isOurs
+                                    ? "border-emerald-300/20 bg-[linear-gradient(180deg,rgba(8,95,74,0.82),rgba(8,70,60,0.78))] shadow-[0_0_26px_rgba(16,185,129,0.16)]"
+                                    : "border-white/8 bg-[linear-gradient(180deg,rgba(9,17,39,0.74),rgba(7,13,31,0.9))]"
+                                } ${isRowActive ? "results-row-active border-cyan-300/22" : ""}`}
+                              >
+                                <span
+                                  className={`text-[0.88rem] font-semibold leading-5 sm:text-[0.94rem] ${
+                                    normalizedRow.isOurs ? "text-white" : "text-slate-100"
+                                  }`}
+                                >
+                                  {normalizedRow.model}
+                                  {normalizedRow.starred ? (
+                                    <sup className="ml-1 text-[0.68rem] text-cyan-200/90">*</sup>
+                                  ) : null}
+                                </span>
+                                {normalizedRow.citation ? (
+                                  <span className="mt-1 block text-[0.7rem] leading-4 font-medium tracking-[0.04em] text-slate-400">
+                                    {normalizedRow.citation}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </th>
+
+                            {activeBenchmark.metrics.map((metric, metricIndex) => {
+                              const cell =
+                                normalizedRow.values[metricIndex] ??
+                                ({
+                                  display: "-",
+                                } as {
+                                  display: string;
+                                  rank?: "best" | "second";
+                                  note?: string;
+                                });
+                              const isUnavailable = cell.display === "-";
                           const rankClass =
                             cell.rank === "best"
                               ? "border-emerald-300/22 bg-[linear-gradient(180deg,rgba(6,78,59,0.34),rgba(7,89,69,0.2))] text-emerald-300 shadow-[0_0_22px_rgba(16,185,129,0.14)]"
                               : cell.rank === "second"
                                 ? "border-sky-300/20 bg-[linear-gradient(180deg,rgba(37,99,235,0.26),rgba(30,64,175,0.14))] text-sky-300 shadow-[0_0_20px_rgba(59,130,246,0.14)]"
-                                : normalizedRow.isOurs
-                                  ? "border-emerald-300/18 bg-[linear-gradient(180deg,rgba(8,95,74,0.7),rgba(8,70,60,0.56))] text-white"
-                                  : "border-white/8 bg-[linear-gradient(180deg,rgba(8,16,37,0.7),rgba(7,13,30,0.9))] text-slate-100";
+                                : "border-white/8 bg-[linear-gradient(180deg,rgba(8,16,37,0.7),rgba(7,13,30,0.9))] text-slate-100";
 
-                          return (
-                            <td
-                              key={`${row.model}-${metric.label}`}
-                              className={`px-0 py-0 align-middle ${borderClass}`}
-                            >
-                              <div
-                                className={`mx-px my-px flex h-[64px] items-center justify-center rounded-[14px] border px-3 py-2.5 text-center transition duration-300 sm:px-4 ${
-                                  isUnavailable
-                                    ? "border-white/6 bg-[linear-gradient(180deg,rgba(8,15,34,0.52),rgba(7,12,28,0.72))] text-slate-500"
-                                    : rankClass
-                                } ${isRowActive ? "results-row-active border-cyan-300/22" : ""}`}
-                              >
-                                <div className="flex items-center justify-center gap-1.5">
-                                  <span className="text-[0.92rem] font-semibold sm:text-[0.98rem]">
-                                    {cell.display}
-                                  </span>
-                                  {cell.note ? (
-                                    <span
-                                      className={`relative -top-1.5 text-[0.6rem] font-semibold ${
-                                        cell.rank === "best"
-                                          ? "text-emerald-200/90"
-                                          : cell.rank === "second"
-                                            ? "text-sky-200/90"
-                                            : "text-slate-300/80"
-                                      }`}
-                                    >
-                                      {cell.note}
-                                    </span>
-                                  ) : null}
-                                </div>
-                              </div>
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                              return (
+                                <td
+                                  key={`${row.model}-${metric.label}`}
+                                  className={`px-0 py-0 align-middle ${borderClass}`}
+                                >
+                                  <div
+                                    className={`mx-px my-px flex h-[64px] items-center justify-center rounded-[14px] border px-3 py-2.5 text-center transition duration-300 sm:px-4 ${
+                                      isUnavailable
+                                        ? "border-white/6 bg-[linear-gradient(180deg,rgba(8,15,34,0.52),rgba(7,12,28,0.72))] text-slate-500"
+                                        : rankClass
+                                    } ${isRowActive ? "results-row-active border-cyan-300/22" : ""}`}
+                                  >
+                                    <div className="flex items-center justify-center gap-1.5">
+                                      <span className="text-[0.92rem] font-semibold sm:text-[0.98rem]">
+                                        {cell.display}
+                                      </span>
+                                      {cell.note ? (
+                                        <span
+                                          className={`relative -top-1.5 text-[0.6rem] font-semibold ${
+                                            cell.rank === "best"
+                                              ? "text-emerald-200/90"
+                                              : cell.rank === "second"
+                                                ? "text-sky-200/90"
+                                                : "text-slate-300/80"
+                                          }`}
+                                        >
+                                          {cell.note}
+                                        </span>
+                                      ) : null}
+                                    </div>
+                                  </div>
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
         </div>

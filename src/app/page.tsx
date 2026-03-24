@@ -1,6 +1,8 @@
+import { CitationSection } from "@/components/citation-section";
 import { DemoVideoSection } from "@/components/demo-video-section";
 import { ExperimentalResultsSection } from "@/components/experimental-results-section";
 import { HeroSection } from "@/components/hero-section";
+import { PlatformGallerySection } from "@/components/platform-gallery-section";
 import { SpecificDatasetsSection } from "@/components/specific-datasets-section";
 import { TechnicalFrameworkSection } from "@/components/technical-framework-section";
 import { WhatIsTextCrafterSection } from "@/components/what-is-textcrafter-section";
@@ -17,6 +19,8 @@ export default function Home() {
       <SpecificDatasetsSection />
       <TechnicalFrameworkSection />
       <ExperimentalResultsSection />
+      <PlatformGallerySection />
+      <CitationSection />
     </main>
   );
 }
